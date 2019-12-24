@@ -1,0 +1,9 @@
+[scaleway]
+type = ###TYPE###
+provider = ###PROVIDER###
+env_auth = ###AUTH###
+access_key_id = ###ACCESS_KEY###
+secret_access_key = ###SECRET_KEY###
+endpoint = ###ENDPOINT###
+region = ###REGION###
+acl = ###ACL###

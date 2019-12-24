@@ -1,0 +1,17 @@
+#!/bin/bash
+
+[ ! -f "$(pwd)/.env" ] || ENV_FILE="--env-file $(pwd)/.env"
+[ -d "~/.config/rclone/" ] || mkdir -p ~/.config/rclone/
+
+EXECUTABLE=$(basename $0| sed 's/[0-9*.]//g')
+VERSION=$(basename $0| sed 's/[a-z-]//g')
+if [ "$VERSION" == "" ] || [ ! "$VERSION" ]; then
+	VERSION="latest"
+fi
+
+docker run -it --rm $ENV_FILE \
+	-v ~/.config/rclone/:/config/rclone/ \
+	-v $(pwd):/data/ \
+	--entrypoint rclone \
+	nouchka/rclone:$VERSION \
+	"$@"
